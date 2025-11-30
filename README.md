@@ -1,51 +1,40 @@
-# 🚀 SaaS Growth Simulator
+# Antigravity Demo Suite
 
-A powerful, interactive dashboard to forecast your startup's growth metrics. Built with [Streamlit](https://streamlit.io) and Python.
+A collection of interactive applications showcasing the power of rapid Python development with Streamlit.
 
-## Features
+## 🚀 Live Demos
 
-- **Interactive Modeling**: Adjust Growth Rate, Churn Rate, and ARPU in real-time.
-- **Visual Forecasts**: Beautiful charts for MRR (Monthly Recurring Revenue) and User Growth.
-- **Key Metrics**: Instant calculation of Projected ARR (Annual Recurring Revenue) and LTV.
-- **Export Data**: Download your forecast as a CSV file for further analysis.
+### 1. Math Whiz 🧮
+An enhanced multiplication quiz to sharpen your mental math skills.
+- **Features:** Difficulty levels, score tracking, game history, and gamified feedback.
 
-## How to Run Locally
+### 2. Storyteller AI 🦁
+Create your own Aesop-style fables with audio and visuals.
+- **Features:**
+    - Choose from themes like Honesty, Bravery, and Kindness.
+    - Select a cast of animal characters (Lion, Mouse, Elephant, etc.).
+    - Generates a unique story with a moral lesson.
+    - **Listen:** Auto-generated audio narration.
+    - **See:** AI-generated illustrations of your story.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/lhiebert01/ag-demo-app.git
-   cd ag-demo-app
-   ```
+## 🛠️ Installation & Running
 
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/lhiebert01/ag-demo-app.git
+    cd ag-demo-app
+    ```
 
-3. **Run the app**:
-   ```bash
-   streamlit run streamlit_app.py
-   ```
+2.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-## Deployment
+3.  **Run the app:**
+    ```bash
+    streamlit run streamlit_app.py
+    ```
 
-### Deploy to Streamlit Cloud (Recommended)
-
-1. Push this code to a GitHub repository.
-2. Go to [share.streamlit.io](https://share.streamlit.io).
-3. Connect your GitHub account and select your repository.
-4. Click **Deploy**!
-
-### Deploy to Render
-
-1. Create a new **Web Service** on Render.
-2. Connect your GitHub repository.
-3. Use the following settings:
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `streamlit run streamlit_app.py --server.port $PORT --server.address 0.0.0.0`
-
-## Built With
-
-- [Streamlit](https://streamlit.io) - The fastest way to build data apps in Python.
-- [Plotly](https://plotly.com) - Interactive graphing library.
-- [Pandas](https://pandas.pydata.org) - Data manipulation and analysis.
+## 📂 Project Structure
+- `streamlit_app.py`: The main launcher application.
+- `demos/`: Contains the source code for each demo.
