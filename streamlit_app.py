@@ -15,7 +15,7 @@ st.sidebar.markdown("### Select a Demo")
 
 demo_selection = st.sidebar.radio(
     "Choose an App:",
-    ["Math Whiz 🧮", "SaaS Simulator 📈", "Storyteller AI 🦁"]
+    ["Math Whiz 🧮", "Storyteller AI 🦁"]
 )
 
 st.sidebar.markdown("---")

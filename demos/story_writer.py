@@ -9,12 +9,24 @@ def run():
     st.markdown("## 🦁 Storyteller AI")
     st.markdown("### Create your own Aesop-style fable with audio and visuals.")
 
+    # Theme Definitions
+    theme_definitions = {
+        "Honesty": "Honesty means telling the truth, even when it is hard or you might get in trouble.",
+        "Bravery": "Bravery is not about having no fear, but doing the right thing even when you are scared.",
+        "Kindness": "Kindness is being friendly, generous, and considerate to others without expecting anything in return.",
+        "Greed": "Greed is a selfish desire to have more of something (like food or money) than you need.",
+        "Wisdom": "Wisdom is using your knowledge and experience to make good decisions.",
+        "Friendship": "Friendship is a relationship of mutual affection and trust between two or more people.",
+        "Perseverance": "Perseverance means to keep trying and not giving up, even when things are difficult.",
+        "Humility": "Humility is not thinking you are better than others, and being willing to learn."
+    }
+
     # Sidebar Inputs
     st.sidebar.header("📖 Story Settings")
     
     theme = st.sidebar.selectbox(
         "Choose a Theme",
-        ["Honesty", "Bravery", "Kindness", "Greed", "Wisdom", "Friendship", "Perseverance", "Humility"]
+        list(theme_definitions.keys())
     )
     
     # Expanded Character List
@@ -39,53 +51,80 @@ def run():
             # Simulate AI generation delay
             time.sleep(2.0)
             
-            # Enhanced Story Generation Logic
+            # --- Dynamic Plot Engine ---
+            
             c1 = characters[0]
             c2 = characters[1]
             c3 = characters[2] if len(characters) > 2 else "wise old Owl"
             
-            intro_templates = [
-                f"Deep in the heart of the Whispering Woods, where the trees touched the sky and the rivers sang songs of old, lived a {c1} and a {c2}. The {c1} was known far and wide for their strength and pride, while the {c2} was quiet, observant, and often overlooked by the other animals.",
-                f"On the edge of the Golden Savannah, under the watchful eye of the midday sun, a {c1} and a {c2} crossed paths. The {c1} was busy collecting food for the winter, always anxious about the future. The {c2}, on the other hand, lived for the moment, enjoying the warmth of the sun and the scent of the blooming flowers.",
-                f"High up in the Misty Mountains, a {c1} made their home in a cozy cave. Not far away, a {c2} lived in a burrow beneath an ancient oak tree. Despite their differences, they were neighbors in this rugged land. The {c1} often boasted of their adventures, while the {c2} preferred the safety of their home."
+            # 1. Setting
+            settings = [
+                "in the heart of the Whispering Woods",
+                "on the dusty plains of the Golden Savannah",
+                "near the bubbling banks of the Crystal River",
+                "high atop the Misty Mountains",
+                "in a sun-dappled meadow filled with wildflowers"
             ]
+            setting = random.choice(settings)
             
-            conflict_templates = [
-                f"One day, a great drought fell upon the land. The rivers dried up, and the green grass turned to dust. The animals grew hungry and thirsty. The {c1}, relying on their strength, tried to hoard the remaining water, refusing to share with the smaller animals. 'I am the strongest,' the {c1} declared, 'I deserve to survive.' The {c2} watched in sadness, knowing that selfishness would only lead to ruin.",
-                f"A rumor spread through the forest that a hunter was approaching. Panic seized the animals. The {c1} decided to run and hide, thinking only of their own safety. 'Every animal for themselves!' shouted the {c1} as they fled. The {c2}, however, saw that the younger animals were too slow to escape and knew they needed help.",
-                f"The {c1} found a shiny, magical gemstone that was said to grant one wish. Overcome by greed, the {c1} wanted to wish for eternal power. 'With this, I shall rule the forest!' the {c1} proclaimed. The {c2} warned, 'Power without wisdom is dangerous. We should use it to heal the forest.' But the {c1} would not listen."
+            # 2. Inciting Incident (The "Spark")
+            incidents = [
+                f"found a mysterious, glowing object hidden beneath a rock",
+                f"heard a cry for help echoing from a deep ravine",
+                f"decided to hold a contest to see who was the best at everything",
+                f"realized that the winter supplies were dangerously low",
+                f"stumbled upon a path they had never seen before"
             ]
+            incident = random.choice(incidents)
             
-            climax_templates = [
-                f"Suddenly, a fierce storm broke the silence. Lightning struck a nearby tree, setting it ablaze. The fire spread rapidly, trapping the {c1}. The {c1} roared for help, but the other animals were too afraid. Just then, the {c2} remembered the virtue of {theme.lower()}. Despite the danger, the {c2} rallied the other animals. 'We must help, for we are all part of this forest!' cried the {c2}.",
-                f"The hunter's trap snapped shut, capturing the {c1}. The {c1} struggled and roared, but the ropes only tightened. All hope seemed lost. The {c2} approached carefully. 'Why help me?' asked the {c1}, ashamed of their earlier selfishness. 'Because {theme.lower()} is what binds us,' replied the {c2}. The {c2} began to gnaw at the ropes.",
-                f"As the {c1} held the gemstone, the ground began to shake. The magic was too unstable! The {c1} was paralyzed with fear. The {c3} appeared and shouted, 'Drop it! Only a selfless heart can control the magic!' The {c1} looked at the {c2}, who nodded encouragingly. With a trembling hand, the {c1} tossed the stone to the {c2}."
+            # 3. Conflict (Based on Theme if possible, or generic)
+            if theme == "Honesty":
+                conflict = f"The {c1} wanted to keep the discovery a secret to gain an advantage, while the {c2} felt they should tell the others."
+            elif theme == "Bravery":
+                conflict = f"A terrifying storm rolled in. The {c1} wanted to hide, but the {c2} knew they had to warn the village."
+            elif theme == "Greed":
+                conflict = f"The {c1} tried to take everything for themselves, leaving nothing for the {c2}."
+            elif theme == "Kindness":
+                conflict = f"The {c1} laughed at a smaller animal who was struggling, but the {c2} felt a tug at their heart."
+            else:
+                conflict = f"The {c1} and the {c2} argued about the best way to solve the problem, neither willing to listen to the other."
+
+            # 4. Climax (The Turning Point)
+            climax_actions = [
+                f"Suddenly, the ground beneath them gave way!",
+                f"Just then, a fierce eagle swooped down from the sky!",
+                f"Without warning, the river burst its banks!",
+                f"The mysterious object began to hum with a strange energy!",
+                f"They realized they were hopelessly lost as the sun began to set."
             ]
+            climax = random.choice(climax_actions)
             
-            resolution_templates = [
-                f"Working together, the animals extinguished the fire and saved the {c1}. The {c1} looked at the {c2} with new respect. 'I was wrong,' admitted the {c1}. 'Strength is not just about muscles, but about the heart.' From that day on, the {c1} and the {c2} worked together to protect the forest, teaching everyone that {theme.lower()} conquers all.",
-                f"The ropes gave way, and the {c1} was free. The {c1} hugged the {c2}, tears in their eyes. 'You saved me, even after I abandoned you,' said the {c1}. 'That is the true meaning of {theme.lower()},' smiled the {c2}. They returned to the clearing, where the {c1} apologized to the others and vowed to always help those in need.",
-                f"The {c2} caught the stone and wished for rain to heal the land. Gentle rain began to fall, and the flowers bloomed instantly. The {c1} felt a weight lift from their shoulders. 'Thank you,' whispered the {c1}. 'You showed me that {theme.lower()} is the greatest treasure of all.' The {c3} smiled, knowing the lesson had been learned."
-            ]
-            
+            # 5. Resolution (The Lesson)
+            resolution = f"In that moment of danger, the {c1} looked at the {c2}. They realized that {theme.lower()} was the only way forward. Working together, they overcame the obstacle. The {c1} apologized for their earlier behavior, and the {c2} forgave them."
+
             # Assemble Story
-            part1 = random.choice(intro_templates)
-            part2 = random.choice(conflict_templates)
-            part3 = random.choice(climax_templates)
-            part4 = random.choice(resolution_templates)
+            story_text = (
+                f"Once upon a time, {setting}, lived a {c1} and a {c2}. They were very different, but their paths were destined to cross.\n\n"
+                f"One day, they {incident}. {conflict}\n\n"
+                f"{climax} The {c1} was frozen with fear/uncertainty. But the {c2} remembered the importance of {theme.lower()}.\n\n"
+                f"{resolution} From that day on, everyone in the land knew that {theme_definitions[theme].lower()}"
+            )
             
-            story_text = f"{part1}\n\n{part2}\n\n{part3}\n\n{part4}"
+            # Display Definition
+            st.info(f"**Theme:** {theme}\n\n💡 *{theme_definitions[theme]}*")
             
             # Display Story
             st.markdown("### 📜 The Fable")
             st.write(story_text)
             
             # Generate Dynamic Image Prompt
-            image_prompt = f"A storybook illustration of a {c1} and a {c2} in a forest, theme of {theme}, digital art, warm colors, detailed, 4k"
+            # Include specific action and characters
+            action_desc = f"{c1} and {c2} in {setting}, {theme} theme"
+            image_prompt = f"A children's book illustration of a {action_desc}, colorful, detailed, soft lighting"
             encoded_prompt = urllib.parse.quote(image_prompt)
             image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}"
             
-            st.image(image_url, caption=f"The {c1} and the {c2} - A Tale of {theme}")
+            st.image(image_url, caption=f"Featuring: {c1}, {c2} (and {c3} if present)")
             
             # Generate Audio
             try:
@@ -98,4 +137,4 @@ def run():
             except Exception as e:
                 st.error(f"Could not generate audio: {e}")
 
-            st.success(f"**Moral of the story:** True {theme.lower()} is shown not in words, but in deeds.")
+            st.success(f"**Moral:** {theme_definitions[theme]}")
