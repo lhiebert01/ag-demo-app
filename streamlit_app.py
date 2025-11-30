@@ -1,5 +1,5 @@
 import streamlit as st
-from demos import saas_sim, math_quiz, decision_maker
+from demos import saas_sim, math_quiz, story_writer
 
 # Page Config
 st.set_page_config(
@@ -15,7 +15,7 @@ st.sidebar.markdown("### Select a Demo")
 
 demo_selection = st.sidebar.radio(
     "Choose an App:",
-    ["Math Whiz 🧮", "SaaS Simulator 📈", "Decision Architect 🏗️"]
+    ["Math Whiz 🧮", "SaaS Simulator 📈", "Storyteller AI 🦁"]
 )
 
 st.sidebar.markdown("---")
@@ -32,5 +32,5 @@ if demo_selection == "Math Whiz 🧮":
     math_quiz.run()
 elif demo_selection == "SaaS Simulator 📈":
     saas_sim.run()
-elif demo_selection == "Decision Architect 🏗️":
-    decision_maker.run()
+elif demo_selection == "Storyteller AI 🦁":
+    story_writer.run()
